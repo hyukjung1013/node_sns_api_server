@@ -15,19 +15,19 @@
 
             <div id="domain" style="color: white">
                 <div id="title">Add Domain</div>
-                <form action="" method="post">
+                <form action="/domain" method="post">
                     <div>
                         <div class="radio-group">
                             <label for="free-radio">Free</label>
-                            <input id="free-radio" type="radio"/>
+                            <input id="free-radio" type="radio" name="type" value="free"/>
                         </div>
                         <div class="radio-group">
                             <label for="premium-radio">Premium</label>
-                            <input id="premium-radio" type="radio"/>
+                            <input id="premium-radio" type="radio" name="type" value="premium"/>
                         </div>
                         <div id="domain-group">
                             <label for="domain-txt">Domain</label>
-                            <input id="domain-txt" type="text" placeholder="ex) naver.com"/>
+                            <input id="domain-txt" name="host" type="text" placeholder="ex) naver.com"/>
                         </div>
                         <button id="add-btn" type="submit">Add</button>
                     </div>
@@ -41,16 +41,13 @@
                         <th>Type</th>
                         <th>Client Secret</th>
                     </tr>
-                    <tr>
-                        <td>Hello</td>
-                        <td>Hello</td>
-                        <td>Helloasdasdasdasdasdasdasdasdasasdasdasdasdasdasdasdasdasdadasdasd</td>
-                    </tr>
-                    <tr>
-                        <td>Hello</td>
-                        <td>Hello</td>
-                        <td>Hello</td>
-                    </tr>
+                    <% for (domain of user.domains) { %>
+                        <tr>
+                            <td><%=domain.dataValues.host%></td>
+                            <td><%=domain.dataValues.type%></td>
+                            <td><%=domain.dataValues.clientSecret%></td>
+                        </tr>
+                    <% } %>
                 </table>
             </div>
     </div>
