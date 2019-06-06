@@ -1,0 +1,8 @@
+/node_modules/*
+package-lock.json
+/passport/config/kakao.json
+/passport/config/facebook.json
+/config/config.json
+/uploads/*
+.env
+/config/config.json

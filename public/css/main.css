@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: rgb(245, 245, 245);
+}
+
+.container {
+    width: 700px;
+    margin: 40px auto;
+    border: 1px solid rgb(209, 209, 209);
+    background: white;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    padding: 10px;
+}
+
+#profile {
+    padding: 20px;
+    background: rgb(0, 0, 48);
+    border-radius: 10px;
+}
+
+#name {
+    font-size: 20px;
+    font-weight: 3px;
+    color: white;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+#logout-btn {
+    margin-left: 10px;
+    display: inline-block;
+    padding: 5px;
+    color: rgb(0, 0, 48);
+    background: rgb(238, 75, 0);
+    border-radius: 10px;
+}
+
+#domain {
+    margin-top: 10px;
+    padding: 20px;
+    background: rgb(0, 0, 48);
+    border-radius: 10px;
+}
+
+#title {
+    font-size: 30px;
+}
+
+.radio-group {
+    display: inline-block;
+    padding: 10px 10px 10px 0px;
+}
+
+#domain-group {
+    margin-bottom: 10px;
+}
+
+#domain-txt {
+    margin-left: 10px;
+    border-radius: 5px;
+    width: 70%;
+    padding: 7px;
+}
+
+#add-btn {
+    display: inline-block;
+    padding: 5px;
+    color: rgb(0, 0, 48);
+    background: rgb(238, 75, 0);
+    border-radius: 10px;
+    font-size: 15px;
+    border: none;
+}
+
+#content {
+    margin-top: 10px;
+    padding: 20px;
+    background: rgb(0, 0, 48);
+    border-radius: 10px;
+}
+
+#table {
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 5px 2.5px 2px 5px;
+}
+
+th {
+    color: rgb(238, 75, 0);
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+td {
+    font-size: 12px;
+    font-weight: lighter;
+} 

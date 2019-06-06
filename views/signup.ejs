@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <link rel="stylesheet" href="/css/signup.css"/>
+</head>
+<body>
+    <div class="container">
+        <div id="left">
+            <h1 id="msg"><%=msg%></h1>
+            <form action="/auth/signup_process" method="post">
+                <div class="form-input"><input name="email" type="email" placeholder="email" required autofocus/></div>
+                <div class="form-input"><input name="name" type="text" placeholder="name" required/></div>
+                <div class="form-input"><input name="password" type="password" placeholder="password" required/></div>
+                <div class="form-input"><input name="nickname" type="text" placeholder="nickname" required/></div>
+                <div class="form-input"><button id="login-btn" type="submit" required>Sign up</button></div>
+            </form>
+            <div class="text">Have an account? <a href="/auth/login">Log in</a></div>
+        </div>
+        <div id="right">
+            <div id="social-network">Start with social network</div>
+            <div><a href="/auth/kakao" class="btn">Kakao</a></div>
+            <div><a class="btn">Naver</a></div>
+            <div><a href="/auth/facebook" class="btn">Facebook</a></div>
+            <div><a class="btn">Google</a></div>
+        </div>
+    </div>
+</body> 

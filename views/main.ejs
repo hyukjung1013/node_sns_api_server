@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+</head>
+<body>
+    <div class="container">
+
+            <div id="profile">
+                <div id="name"><b><%=user.nickname%><b></div>
+                <a id="logout-btn" class="btn" href="/auth/logout">Log out</a>
+            </div>
+
+            <div id="domain" style="color: white">
+                <div id="title">Add Domain</div>
+                <form action="" method="post">
+                    <div>
+                        <div class="radio-group">
+                            <label for="free-radio">Free</label>
+                            <input id="free-radio" type="radio"/>
+                        </div>
+                        <div class="radio-group">
+                            <label for="premium-radio">Premium</label>
+                            <input id="premium-radio" type="radio"/>
+                        </div>
+                        <div id="domain-group">
+                            <label for="domain-txt">Domain</label>
+                            <input id="domain-txt" type="text" placeholder="ex) naver.com"/>
+                        </div>
+                        <button id="add-btn" type="submit">Add</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="content" style="color: white;">
+                <table id="table">
+                    <tr>
+                        <th>Domain</th>
+                        <th>Type</th>
+                        <th>Client Secret</th>
+                    </tr>
+                    <tr>
+                        <td>Hello</td>
+                        <td>Hello</td>
+                        <td>Helloasdasdasdasdasdasdasdasdasasdasdasdasdasdasdasdasdasdadasdasd</td>
+                    </tr>
+                    <tr>
+                        <td>Hello</td>
+                        <td>Hello</td>
+                        <td>Hello</td>
+                    </tr>
+                </table>
+            </div>
+    </div>
+</body> 
