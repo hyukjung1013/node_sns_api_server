@@ -1,10 +1,36 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
+const url = require('url');
 
 const { verifyToken, apiLimiter } = require('../middlewares');
 const { Domain, User, Post, Hashtag } = require('../../models');
 
 const router = express.Router();
+
+// router.use(cors());
+/*
+ * Response Header
+ * Access-Control-Allow-Origin: *
+ */
+
+router.use( async (req, res, next) => {
+    console.log('CLIENT: ', req.get('origin'));                 // http://localhost:9003   
+    console.log('CLIENT: ', url.parse(req.get('origin')).host); // localhost:9003
+
+    const domain = await Domain.findOne({
+        where: { host: url.parse(req.get('origin')).host }
+    });
+    if (domain) {
+        cors( { origin: req.get('origin')} )(req, res, next);
+        /*
+        * Response Header
+        * Access-Control-Allow-Origin: http://localhost:9003 
+        */
+    } else {
+        next();
+    }
+});
 
 router.post('/token', apiLimiter, async (req, res) => {
 
