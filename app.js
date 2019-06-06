@@ -41,8 +41,10 @@ app.use(flash());
 // Routers
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
+const apiRouter = require('./routes/api/index');
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
+app.use('/api', apiRouter);
 
 app.use((req, res, next) => {
     const err = new Error('Not Found');
