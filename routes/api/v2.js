@@ -1,15 +1,15 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const { verifyToken, deprecated } = require('../middlewares');
+
+const { verifyToken, apiLimiter } = require('../middlewares');
 const { Domain, User, Post, Hashtag } = require('../../models');
 
 const router = express.Router();
 
-router.use(deprecated);
-
-router.post('/token', async (req, res) => {
+router.post('/token', apiLimiter, async (req, res) => {
 
     const { clientSecret } = req.body;
+
     try {
         const domain = await Domain.findOne({
             where: { clientSecret: clientSecret },
@@ -30,7 +30,7 @@ router.post('/token', async (req, res) => {
             id: domain.user.id,
             nickname: domain.user.nickname
         }, process.env.JWT_SECRET, {
-            expiresIn: '1m',    // 1minute
+            expiresIn: '30m',    // 30 minutes
             issuer: 'YOLO corp.'
         });
 
@@ -49,11 +49,11 @@ router.post('/token', async (req, res) => {
     }
 });
 
-router.get('/test', verifyToken, (req, res) => {
+router.get('/test', verifyToken, apiLimiter, (req, res) => {
     res.json(req.decoded);
 });
 
-router.get('/posts/my', verifyToken, async (req, res) => {
+router.get('/posts/my', apiLimiter, verifyToken, async (req, res) => {
     Post.findAll( { where: { userId: req.decoded.id } } )
     .then((posts) => {
         res.json({
@@ -70,7 +70,7 @@ router.get('/posts/my', verifyToken, async (req, res) => {
     });
 });
 
-router.get('/posts/hashtag/:title', verifyToken, async (req, res) => {
+router.get('/posts/hashtag/:title', verifyToken, apiLimiter, async (req, res) => {
     try {
         const hashtag = await Hashtag.findOne({ where: {title: req.params.title} });
         if (!hashtag) {
@@ -94,5 +94,6 @@ router.get('/posts/hashtag/:title', verifyToken, async (req, res) => {
         });
     }
 });
+
 
 module.exports = router;
